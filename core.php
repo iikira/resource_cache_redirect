@@ -20,7 +20,7 @@ function get_redir_url($resource_url)
 {
     stream_context_set_default(array('http' => array('method' => 'HEAD')));
     $headers = get_headers($resource_url, 1);
-    if ($headers && $headers['Location']) {
+    if (array_key_exists("Location", $headers)) {
         return $headers['Location'];
     }
     return $resource_url;
@@ -62,6 +62,11 @@ function cache_get_resource_item($resource_url)
         $stmt->close();
     }
     return $redir_url;
+}
+
+function modify_url($url, $scheme)
+{
+    return preg_replace("/^.*?:\/\/(.*?)/", "${scheme}://$1", $url);
 }
 
 function close_database()
