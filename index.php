@@ -22,4 +22,4 @@ switch ($scheme) {
 }
 
 header("Location: ${redir_url}");
-header("Cache-Control: public, max-age=3600");
+header("Cache-Control: public, max-age=".CACHE_TIME);

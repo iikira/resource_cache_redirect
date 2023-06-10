@@ -1,2 +1,3 @@
 /config.*.php
 /rcr.zip
+.DS_Store
